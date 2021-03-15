@@ -102,7 +102,10 @@
                             <td>{{ curso.nombre }}</td>
                             <td>{{ curso.descripcion.desc }}</td>
                             <td>{{ curso.updated_at }}</td>
-                            <td><a href="/eliminar/{{ curso.id }}">Eliminar</a></td>
+                            <td>
+                                <a href="/eliminar/{{ curso.id }}">Eliminar</a> |
+                                <a href="/comentarios/{{ curso.id }}">Ver_comentarios</a>
+                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>

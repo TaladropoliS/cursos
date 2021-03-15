@@ -11,7 +11,7 @@ def inicio(request):
         'cursos':cursos,
         'desc': desc
     }
-    return render(request, 'index.html', context)
+    return render(request, 'crear.html', context)
 
 def crear(request):
     if request.method == "POST":
@@ -38,6 +38,27 @@ def no_eliminar(request, id):
 
 def si_eliminar(request, id):
     curso = Curso.objects.get(id=id)
-    print('PRIINT:',curso)
     curso.delete()
     return redirect (inicio)
+
+def comentarios(request, id):
+    curso = Curso.objects.get(id=id)
+    comentarios = Comentario.objects.filter(curso=Curso.objects.get(id=id))
+    context = {
+        'curso':curso,
+        'comentarios':comentarios,
+    }
+    return render(request, 'comentarios.html', context)
+
+def comentar(request, id):
+    if request.method == "POST":
+        errors = Curso.objects.validador_coment(request.POST)
+        if len(errors) > 0:  # si hay errores, recorra cada par clave-valor y cree un mensaje flash
+            for key, value in errors.items():
+                messages.error(request, value)
+            return redirect(f'/comentarios/{id}')
+        else:
+            curso = Curso.objects.get(id=id)
+            comentario = Comentario.objects.create(coment=request.POST['comentario'], curso=curso)
+            return redirect(f'/comentarios/{id}')
+    return redirect(f'/comentarios/{id}')
