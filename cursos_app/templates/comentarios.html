@@ -68,11 +68,12 @@
                                 <tbody>
                                     {% for comentario in comentarios %}
                                     <tr>
-                                        <td>{{ curso.comentario.coment }}</td>
+                                        <td>{{ comentario.coment }}</td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
                             </table>
+                            <p>{{ no_hay }}</p>
                         </div>
                     </div>
                 </div>
@@ -89,7 +90,7 @@
                             {% endfor %}
                         </ul>
                         {% endif %}
-
+                        <h4>Agregar comentario</h4>
                         <label for="comentario" class="form-label mt-4">Comentar (mínimo 3 caracteres)</label>
                         <textarea id="comentario" name="comentario" class="form-control" rows="3" maxlength="600" placeholder="Ingresar  comentario"></textarea>
                     </div>

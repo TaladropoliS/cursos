@@ -44,10 +44,17 @@ def si_eliminar(request, id):
 def comentarios(request, id):
     curso = Curso.objects.get(id=id)
     comentarios = Comentario.objects.filter(curso=Curso.objects.get(id=id))
-    context = {
-        'curso':curso,
-        'comentarios':comentarios,
-    }
+    if comentarios:
+        context = {
+            'curso':curso,
+            'comentarios':comentarios,
+        }
+    else:
+        no_hay = 'No hay comentarios'
+        context = {
+            'curso': curso,
+            'no_hay': no_hay,
+        }
     return render(request, 'comentarios.html', context)
 
 def comentar(request, id):
