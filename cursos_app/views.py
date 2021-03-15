@@ -50,7 +50,7 @@ def comentarios(request, id):
             'comentarios':comentarios,
         }
     else:
-        no_hay = 'No hay comentarios'
+        no_hay = 'No se han agregado comentarios'
         context = {
             'curso': curso,
             'no_hay': no_hay,

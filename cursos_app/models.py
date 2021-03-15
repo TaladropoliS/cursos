@@ -15,7 +15,7 @@ class FormManager(models.Manager):
     def validador_coment(self, postData):
         errors = {}
         if len(postData['comentario']) < 3:
-            errors["comentario"] = "Ingresar comentaroio con más de 3 caracteres."
+            errors["comentario"] = "Ingresar comentario con más de 3 caracteres."
             return errors
         return errors
 
