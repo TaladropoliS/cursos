@@ -31,7 +31,13 @@ def eliminar(request, id):
     context = {
         'curso':curso,
     }
-    if request.method == "POST":
-        if request.POST['eliminar'] == NO:
-            redirect (inicio)
     return render(request, 'eliminar.html', context)
+
+def no_eliminar(request, id):
+    return redirect (inicio)
+
+def si_eliminar(request, id):
+    curso = Curso.objects.get(id=id)
+    print('PRIINT:',curso)
+    curso.delete()
+    return redirect (inicio)

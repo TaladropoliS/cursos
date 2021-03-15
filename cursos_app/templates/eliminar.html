@@ -64,16 +64,14 @@
         </div>
 
         <div class="row">
-            <form id="eliminar" name="eliminar" action="eliminar" method="post"> {% csrf_token %}
-                <div class="col-sm-6 pt-3">
-                    <div class="row">
-                        <div class="col-sm-3 pt-3">
-                            <input type="submit" id="no_eliminar" name="no_eliminar" value="NO" class="btn btn-success m-l-4"></button>
-                        </div>
-                        <div class="col-sm-5 pt-3">
-                            <input type="submit" id="si_eliminar" name="si_eliminar" value="SI, quiero eliminar este curso" class="btn btn-danger m-l-4"></button>
-                        </div>
-                    </div>
+            <form class="col-sm-1 pt-3" id="no_eliminar" name="no_eliminar" action="no_eliminar/{{curso.id}}" method="post"> {% csrf_token %}
+                <div class="">
+                    <input type="submit" id="no_eliminar" name="no_eliminar" value="NO" class="btn btn-success m-l-4"></button>
+                </div>
+            </form>
+            <form class="col-sm-2 pt-3" id="si_eliminar" name="si_eliminar" action="si_eliminar/{{curso.id}}" method="post"> {% csrf_token %}
+                <div class="">
+                    <input type="submit" id="si_eliminar" name="si_eliminar" value="SI, quiero eliminar este curso" class="btn btn-danger m-l-4"></button>
                 </div>
             </form>
         </div>
